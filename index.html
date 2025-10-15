@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">  
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Nunito", sans-serif;
+            
+        }
+
+        body{
+            background-color: rgb(225, 244, 242);
+        }
+        /* .parent{
+            background-color: rgb(225, 244, 242);
+            height: 100%;
+            
+        } */
+
+        .maindiv{
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: auto;
+            padding-top: 90px;
+            padding-bottom: 20px;
+        }
+
+
+        .maincol{
+            display: grid;
+            grid-template-columns: 1fr 0.5fr;
+            column-gap: 80px;
+
+        }
+
+        .logo{
+            height: 40px;
+        }
+
+        .topcontainer{
+            position: fixed;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* border: green solid 1px; */
+            background-color: rgb(16, 25, 33);
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.537);
+        }
+
+        .lefttop{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logoutcontainer i{
+            color: white;
+        }
+
+        .iconstyle{
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .exit{
+            position: absolute;
+            top: -10px;
+            right: -10px;
+
+        }
+
+        .exit i{
+            font-size: 25px;
+            height: 25px;
+            width: 25px;
+            border-radius: 100%;
+            background-color: white;
+            color: rgb(215, 80, 80);
+        }
+
+        .exit i:hover{
+            font-size: 28px;
+            height: 28px;
+            width: 28px;
+            border-radius: 100%;
+            background-color: white;
+            color: rgb(182, 51, 51);
+            transition: 0.5s;
+        }
+        
+        .inputcontainer{
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .flexcolumn{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .btnfontsize{
+            font-weight: 500;
+            text-transform: capitalize;
+            font-size: 18px;
+        }
+
+        button, .sort{
+            cursor: pointer;
+        }
+
+        .loginbtn{
+            margin-top: 10px;
+            border: none;
+            color: white;
+            background-color: transparent;
+        }
+
+        .logininputcontainer{
+            position: absolute;
+            width: 300px;
+            top: 250px;
+            /* left:40px; */
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input{
+            border: 1px solid rgb(77, 76, 76);
+            margin-top: 2px;
+            padding: 4px 2px;
+            border-radius: 5px;
+        }
+
+        .popup{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+         .depositamount, .withdrawamount{
+            display: flex;
+            text-align: end;
+            font-size: 20px;
+            font-weight: 550;
+        }
+
+        .depositbtn, .transferbtn, .loanbtn{
+            background-color: rgb(32, 47, 62);
+            color: white;
+        }
+
+        .depositbtn:hover, .transferbtn:hover, .loanbtn:hover{
+            background-color: rgb(53, 77, 101);
+            color: white;
+            transition: 0.5s;
+        }
+
+        .primarybtn{
+            background-color: rgb(78, 154, 167);
+            color: white; 
+        }
+
+        .primarybtn:hover{
+            background-color: rgb(80, 125, 133);
+            transition: 0.5s;
+        }
+
+        .buttonstyle{
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 8px;
+            border: none;    
+        }
+        
+        .btncontainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;  
+        }
+
+        .deletePop{
+            gap:20px;
+            width:100%
+        }
+
+
+        .welcomentransactions{
+            gap:20px;
+
+        }
+
+        .withdrawndeposit{
+            display: flex;
+            gap:100px;
+            align-items: center;
+            
+        }
+
+        .darktxt{
+            color: rgb(35, 49, 64);
+        }
+
+        .balancecontainer{
+            width: 250px;
+            border-radius: 20px;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 20px;
+            background-color: rgb(31, 47, 62);
+            color: white;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+        }
+
+        .balancecontainer h3{
+            
+            font-size: 45px;
+        }
+
+        .balancecontainer h2{
+            color: white;
+        }
+
+        .despositnwithdrawcontainer{
+            gap: 10px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            justify-content: center;
+            border-radius: 10px;
+            border: #71949a6b 2px solid;
+        }
+
+        .balancenuseroptions{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            /* border: 2px solid red; */
+        }
+
+        .tablestyle{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;   
+            align-items: center;  
+        }
+
+        .tableheadings{
+            border-bottom: 1px solid rgba(63, 130, 142, 0.39);
+        }
+
+        .headerpadding{
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .tablecontents{
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .tablescroll{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            gap: 5px;
+            height: 150px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            margin-right: 4px;
+        }
+
+        .tablescroll .tablecontents:nth-child(even){
+            background-color: rgba(117, 172, 181, 0.23);
+        }
+
+        .tablescroll::-webkit-scrollbar{
+           width: 6px;
+           height: 100%;
+       }
+
+       .tablescroll::-webkit-scrollbar-track{
+           background-color: rgba(0, 0, 0, 0.194);
+           border-radius: 10px;
+       }
+      
+       .tablescroll::-webkit-scrollbar-thumb{
+           background-color: rgb(63, 130, 142);
+           border-radius: 10px;
+       }
+
+        .summarycontainer{
+            border-top: 1px solid rgba(63, 130, 142, 0.39);
+        }
+
+        input{
+            font-size: 15px;
+            margin-top: 4px;
+            border-radius: 5px;
+            padding: 5px 4px;
+            border: 1.5px rgba(32, 67, 73, 0.518) solid ;
+        }
+
+        .transactionnum, .transactionamount{
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .transactions{
+            gap: 5px;
+            background-color: white;
+            border-radius: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .containerheading{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .containerheading i{
+            font-size: 20px;
+        }
+
+        .deleteicon{
+            color: rgb(215, 80, 80)
+        }
+
+        .deletecontents{
+
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .deletecontents i{
+            font-size: 80px;
+        }
+        .welcometxt .username{
+            text-transform: capitalize ;
+        }
+
+
+        .landing{
+            padding-top: 150px;
+            justify-content: center;
+            align-items: center; 
+        }
+
+        .landing h1{
+            text-align: center;
+            color:  rgb(37, 77, 84);
+        }
+
+        .headingsize{
+            font-size: 22px;
+        }
+
+        .summarytxtstyle{
+            font-weight: 550;
+        }
+
+        .rightcontainers{
+            border-radius: 20px;
+            background-color: white;
+            padding: 25px 20px;
+        }
+
+        .btncontainerlanding{
+            width: 400px;
+        }
+
+        .loaninput, .transferinput{
+            display: flex;
+        }
+
+        .logolarge{
+            height: 350px;
+        }
+
+        #loanamount, #transferamount{
+            width: 100%;
+        }
+
+        #loancurrency, #transfercurrency{
+            width: 25px;
+            border: none;
+            font-weight: bold;
+            color: rgb(31, 62, 68) ;
+            text-align: center;
+            background-color: transparent;
+        }
+
+        .deletebtn{
+            background-color: rgb(215, 80, 80);
+            color: white;
+        }
+
+        .deletecontainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .deletebtn:hover{
+            background-color: rgb(182, 51, 51);
+            color: white;
+            transition: 0.5s;
+        }
+
+        .loginlinkcontainer{
+            margin-bottom: 10px;
+        }
+
+        .rightcol{
+            gap: 20px;
+        }
+
+        .deleteheading{
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /*   */
+        .loginoverlay, .deleteoverlay{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.431);
+            display: none;
+        }
+
+         .timercontainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            display: none;
+
+        }
+
+        .datentime{
+            display: flex;
+            gap: 5px;
+            color: rgb(87, 101, 117);
+            font-weight: 500;
+        }
+
+        .errormessage {
+            background-color: rgb(200, 94, 94);
+            font-weight: 600;
+            text-align: center;
+            padding: 8px 10px;
+            border-radius: 20px;
+            color: white;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            /* display: none; */
+        }
+
+        .withdraw{
+            color: red;
+        }
+
+        .deposit{
+            color: rgb(11, 112, 58);
+        }
+
+        .transfer{
+            color: rgb(51, 79, 143);
+        }
+
+        .loan{
+            color: rgb(26, 25, 24);
+        }
+
+        .show{
+            display: block;
+        }
+
+        .hide{
+            display: none;
+        }
+
+        .disabledBtn{
+            background-color: gray;
+            color: white;
+            cursor: default;
+        }
+
+       
+
+        @media (max-width:1190px){
+           
+            .balancenuseroptions{
+                gap: 40px;
+            }
+        }
+
+        @media (max-width:940px){
+           .balancenuseroptions{
+            flex-direction: column;
+            gap: 20px;
+           }
+
+            .maincol{
+            display: grid;
+            grid-template-columns: 1fr;
+            row-gap: 20px;
+            }
+        }
+
+        @media (max-width: 760px){
+            .maincol{
+            display: grid;
+            row-gap: 20px;
+
+            }
+            
+            
+        }
+
+         @media (max-width: 460px){
+            .maincol{
+            display: grid;
+            row-gap: 20px;
+
+            }
+
+             .logolarge{
+            height: 250px;
+        }
+
+        .btncontainerlanding{
+            width: 250px;
+        }
+            
+            
+        }
+
+         @media (max-width: 320px){
+            .maincol{
+            display: grid;
+            row-gap: 20px;
+
+            }
+            
+            .logolarge{
+            height: 230px;
+        }
+
+        .btncontainerlanding{
+            width: 230px;
+        }
+
+        .logininputcontainer{
+            width: 250px;
+        }
+
+         .balancecontainer{
+            width: 100%;
+         }
+
+         .tableheading{
+            font-size: 15px;
+         }
+
+         .transactions{
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+          
+
+    
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="topcontainer">
+
+            <div class="lefttop">
+                <div class="logocontainer">
+                    <img src="photo/logo.png" alt="" class="logo">
+                </div>
+
+                <div class="timercontainer">
+                    <p class="timer btnfontsize">00:05</p>
+                </div>
+
+                <div class="loginlinkcontainer">
+                    <button class="loginbtn btnfontsize " onclick=openLogin() >Login</button>
+                </div>
+
+               
+            </div>
+
+            <div class="loginoverlay">
+                <div class="logincontainer popup">
+
+                    <div class="logininputcontainer flexcolumn">
+                        <div class="exit" onclick=closeLogin()>
+                            <i class="fa-solid fa-circle-xmark "></i>
+                        </div>
+                        <h1 class="loginheading">
+                            Login
+                        </h1>
+
+                        <div class="errorContainer" id="loginError">
+                            
+                        </div>
+
+                        <form action="submit">
+                            <div class="usernamecontainer inputcontainer flexcolumn">
+                                <label for="username">Username</label>
+                                <input type="text" class="username" placeholder="Enter your username">
+            
+                            </div>
+
+                            <div class="passwordcontainer inputcontainer flexcolumn">
+                                <label for="password">Pin</label>
+                                <input type="password" class="pin" placeholder="Enter your pin">
+                            </div>
+
+                            <div class=" btncontainer flexcolumn">
+                                <button class="buttonstyle primarybtn btnfontsize loginbtnMain" type="submit" >
+                                            Login
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="logoutcontainer hide">
+                <i class="fa-solid fa-right-from-bracket iconstyle logoutbtn"></i>
+            </div>
+    </div>
+
+    <div class="maindiv landing flexcolumn">
+        <h1 class="">Welcome to SwiftTrust Bank</h1>
+         <div class="logocontainer">
+                    <img src="photo/logo.png" alt="" class="logolarge">
+        </div>
+
+        <div class="btncontainerlanding ">
+            <button class="buttonstyle btnloginmain primarybtn btnfontsize yes" type="submit" onclick =  openLogin()>
+                Login
+            </button>
+        </div>
+
+
+    </div>
+
+
+    <div class="maindiv userPage hide">
+        
+        <div class="maincol">
+            <div class="leftcol">
+                
+
+                <div class="welcomentransactions flexcolumn ">
+                    <div class="welcomecontainer">
+                            <h1 class="welcometxt darktxt">Good 
+                                <span class="greeting"></span> 
+                                <span class="username">Nadhrah</span>
+                            </h1>
+
+                        <div class="datentime">
+                        <p class="currentdate"></p>
+                        <span>|</span>
+                        <p class="currenttime"></p>
+                        </div>
+                    </div>
+
+                     <div class="balancecontainer flexcolumn">
+                            <div class="containerheading">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                                <h2 class="containerheading headingsize darktxt">
+                                    Total Balance
+                                </h2>
+                            </div>
+                            <h3 class="totalbalanceamount">
+                                <span class="currency">$</span>
+                                <span class="amount">1000</span> 
+                            </h3>
+                     </div>
+
+
+                    <div class="transactions flexcolumn">
+
+                        <div class="tableheadings headerpadding tablestyle">
+                            <h3 class="tableheading darktxt">
+                                Order
+                            </h3>
+                            <h3 class="tableheading darktxt">
+                                Type
+                            </h3>
+                            <h3 class="tableheading darktxt">
+                                Date
+                            </h3>
+                            <h3 class="tableheading darktxt">
+                                Amount
+                            </h3>
+                        </div>
+
+                        <div class="tablescroll flexcolumn">
+
+                            
+                        </div>
+
+                        <div class="summarycontainer headerpadding tablestyle">
+                            <div class="amountincontainer">
+                                <p class="headingtransactionhistory summarytxtstyle darktxt">In</p>
+                                <p class="amountin ">
+
+                                <span class="positive">+</span>
+                                <span class="currency">$</span>    
+                                <span class="amount">80</span>  
+                                
+                                </p>
+                            </div>
+
+                            <div class="amountoutcontainer">
+                                <p class="headingtransactionhistory summarytxtstyle darktxt">Out</p>
+                                <p class="amountout ">
+                                    <span class="negative">-</span>
+                                    <span class="currency">$</span>
+                                    <span class="amount">1000</span>  
+                                    
+                                </p>
+                            </div>
+
+                            <div class="interestcontainer">
+                                <p class="headingtransactionhistory summarytxtstyle darktxt">Interest</p>
+                                <p class="interest ">
+
+                                    <span class="currency">$</span>
+                                    <span class="amount">80</span>  
+                                    
+                                </p>
+                            </div>
+
+                            <div class="sort">
+                                <i class="fa-solid fa-arrow-up-wide-short filterbtn1 "></i>
+                                <i class="fa-solid fa-arrow-down-wide-short filterbtn2 hide"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                
+                </div>
+
+
+            </div>
+
+            <div class="rightcol flexcolumn">
+
+
+                    <form class="transfercontainer rightcontainers" id="transferform">
+
+                        <div class="containerheading">
+                            <i class="fa-solid fa-money-bill-transfer darktxt"></i>
+                            <h2 class="headingsize darktxt">
+                                Transfer Money
+                            </h2>
+                        </div>
+
+                        <div class="errorContainer" id="transferError">
+                                
+                        </div>
+                        
+                        <div class="transfercontentcontainer">
+                            <label for="transferamount">Transfer amount</label>
+                            <div class="transferinput">
+                              
+                                <input type="number" id="transferamount" placeholder="Enter transfer amount">
+                            </div>
+                        </div>
+
+                        <div class="flexcolumn inputcontainer">
+                            <label for="recipientusername">Recipient's username</label>
+                            <input type="text" class="recipientusername" placeholder="Enter recipient's username">
+                        </div>
+
+                        <div class="btncontainer">
+                            <button type="submit" class="transferbtn buttonstyle primarybtn btnfontsize">Transfer</button>
+                        </div>
+                    </form>
+
+
+                    <form class="loancontainer rightcontainers " id="loanform">
+                        <div class="containerheading">
+                            <i class="fas fa-hand-holding-usd darktxt"></i>
+                            <h2 class=" headingsize darktxt">
+                                Loan
+                            </h2>
+                        </div>
+
+                        <div class="errorContainer" id="loanError">
+                            
+                        </div>
+
+                        <div class="loancontentcontainer">
+                            <label for="loanamount">Loan amount</label>
+                            <div class="loaninput">
+                              
+                                <input type="number" id="loanamount" placeholder="Enter loan amount">
+                            </div>
+                        </div>
+
+
+                        <div class="btncontainer">
+                            <button type="submit" class="loanbtn buttonstyle  btnfontsize" >Loan</button>
+                        </div>
+                    </form>
+
+                 <form class=" closeform transfercontainer rightcontainers">
+
+                    <div class="containerheading">
+                        <i class="fa-solid fa-trash-can deleteicon"></i>
+                        <h2 class="containerheading headingsize darktxt">
+                            Close Your Account
+                        </h2>
+                    </div>
+
+                   <div class="errorContainer" id="closeError">
+                            
+                    </div>
+
+                    <div class="flexcolumn inputcontainer">
+                        <label for="username">Username</label>
+                        <input type="text" class="username deleteusername" placeholder="Enter your username">
+                    </div>
+
+                    <div class="flexcolumn inputcontainer">
+                        <label for="pin">Pin</label>
+                        <input type="password" class="pin deletepin" placeholder="Enter your pin">
+                    </div>
+
+                    <div class="btncontainer">
+                        <button type="submit" class="deletebtn buttonstyle btnfontsize closeaccountbtn">Close my account</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        let transactionCount = document.querySelectorAll(".tablecontents").length
+        const totalBalance = document.querySelector(".totalbalanceamount span:last-of-type")
+        const usernameElement = document.querySelector(".username")
+        const pinElement = document.querySelector(".pin")
+        const landingPage = document.querySelector(".landing ")
+        const startPage = document.querySelector(".userPage")
+            
+        const loginOverlay = document.querySelector(".loginoverlay")
+        const greetUser = document.querySelector(".welcometxt span:last-of-type")
+
+        const transactionTable = document.querySelector(".transactions")
+        const deleteOverlay = document.querySelector(".deleteoverlay")
+        
+        const deleteUsernameElement = document.querySelector(".deleteusername")
+        const deletePinElement = document.querySelector(".deletepin")
+
+         const loginLink = document.querySelector(".loginlinkcontainer")
+
+
+        const logoutIcon = document.querySelector(".logoutcontainer")
+
+         const tablescroll = document.querySelector(".tablescroll")
+
+         const timerContainer = document.querySelector(".timercontainer")
+
+        
+        //////////////////////accounts
+
+        const account1 = {
+            username: "nadhrah",
+            pin: 1234,
+            transactions: [450, 600, 900, -840, 40, -950],
+            active: true
+        }
+
+        const account2 = {
+            username: "sarah",
+            pin: 5678,
+            transactions: [1000, 2, 15, -80, -440, -40],
+            active: true
+        }
+
+        const account3 = {
+            username: "jane",
+            pin: 8900,
+            transactions: [4, 80, -900, -40, 10, 150],
+            active: true
+        }
+
+   
+        let accounts = [account1,account2,account3]
+
+
+        /////////////////////////login
+
+        function openLogin(){
+
+            usernameElement.value = ""
+            pinElement.value = ""
+            loginOverlay.classList.add("show")
+
+        }
+
+        const loginError = document.getElementById("loginError")
+        const closeError = document.getElementById("closeError")
+        const loanError = document.getElementById("loanError")
+        const transferError = document.getElementById("transferError")
+
+        let logOutClicked
+        
+        let currentAccount;   
+        const loginBtn =  document.querySelector(".loginbtnMain")
+
+        loginBtn.addEventListener("click", function(e){
+
+            logOutClicked = false
+            
+            e.preventDefault()
+
+            const username = usernameElement.value
+            const existPin = Number(pinElement.value)
+            
+            const existingAccount = accounts.find(function(ele){
+                return ele.username == username
+            })
+
+            if (existingAccount && existingAccount.pin == existPin){
+                
+                landingPage.classList.add("hide")
+                logoutIcon.classList.remove("hide")
+                startPage.classList.remove("hide")
+                timerContainer.classList.add("show")
+                currentAccount = existingAccount
+                greetUser.textContent = existingAccount.username
+                loadTransactions(existingAccount.transactions)
+                calculateTable()
+
+                timerCount()
+
+                username.value = ""
+                existPin.value = ""
+
+                loginLink.classList.add("hide")
+                closeLogin()
+            }else{
+                errorMessage(loginError)
+
+            }
+        })
+
+        ////////////////////////close popup
+
+        function closeLogin(){
+
+            loginOverlay.classList.remove("show")
+
+        }
+
+        loginOverlay.onclick = function(e) {
+
+            if (e.target === loginOverlay){
+
+                closeLogin()
+            }
+        }
+
+    
+        const currentDate = document.querySelector(".currentdate")
+        const currentTime = document.querySelector(".currenttime")
+        const greeting = document.querySelector(".greeting")
+
+        const date = new Date()
+        // const time = date.toLocaleTimeString()
+        let hours = date.getHours()
+        let minutes = String(date.getMinutes()).padStart(2, "0");
+        const monthNum = String(date.getMonth() + 1).padStart(2, "0");
+        const month = date.toLocaleString("default",{month:"short"})
+        const year = date.getFullYear()
+        const yearShort = String(year).slice(-2)
+        const dateNum = date.getDate()
+        const day = date.toLocaleString("default",{weekday:"long"})
+
+
+        const formattedDate = `${day}, ${dateNum} ${month} ${year}`
+        currentDate.textContent = formattedDate
+        currentTime.textContent = `${hours}:${minutes}`
+
+        const formattedTableDate = `${dateNum}.${monthNum}.${yearShort}`
+
+        if (hours >= 12 && hours <=17){
+            greeting.textContent = "afternoon,"
+        }else if (hours >= 0 && hours <= 11 ){
+            greeting.textContent = "morning,"
+        }else{
+            greeting.textContent = "evening,"
+        }
+
+        /////////////////////// transaction history
+
+        function loadTransactions (ele){
+
+            tablescroll.innerHTML = ""
+            ele.forEach(function(ele, ind){
+            const html = `<div class="tablecontents tablestyle ">
+                                <p class="transactionnum">
+                                    ${ind+1}
+                                </p>
+                                <p class="transactiondesc">
+                                    <span class="${
+                                    ele > 0 ? "deposit":"withdraw"
+                                    }">
+                                        ${
+                                        ele > 0 ? "deposit":"withdraw"
+                                        }
+                                    </span>
+                                </p>
+                                <p class="transactiondate">
+                                     13.09.25
+                                </p>
+                                <p class="transactionamount">
+                                    <span class="action"></span>
+                                    <span class="${
+                                    ele > 0 ? "deposit":"withdraw"
+                                    }">
+                                    $
+                                    </span>
+                                    <span class="${
+                                    ele > 0 ? "deposit":"withdraw"
+                                    }">
+                                    ${ele}
+                                    </span> 
+                                </p>
+                            </div>`
+
+        tablescroll.insertAdjacentHTML("afterbegin", html)
+        })
+
+        }
+        
+        /////amount in and amount out
+        const amountIn = document.querySelector(".amountin span:last-of-type")
+        const amountOut = document.querySelector(".amountout span:last-of-type")
+        const interest = document.querySelector(".interest span:last-of-type")
+         let totalBalanceNew
+      
+        let sumofAllNeg
+        let sumofAllPos
+
+        ////////////////////////table calculations
+       let totalAmount
+
+        function calculateTable(){
+
+        const positiveNum = currentAccount.transactions.filter(function(ele, ind, arr){
+        return ele > 0
+        })
+
+        sumofAllPos = positiveNum.reduce(function(first, second, ind,arr){
+        return first +second})
+
+        amountIn.textContent = sumofAllPos
+           
+        const negativeNum = currentAccount.transactions.filter(function(ele, ind, arr){
+            return ele < 0
+        })
+
+        sumofAllNeg = Math.abs(negativeNum.reduce(function(first, second, ind,arr){
+           return first +second
+        }))
+
+       totalBalanceNew = sumofAllPos + sumofAllNeg
+
+    
+       totalAmount = currentAccount.transactions.reduce(function(first, second, ind,arr){
+        return first +second})
+
+       totalBalance.textContent = totalAmount
+
+         updateInterest()
+
+        amountOut.textContent = sumofAllNeg
+
+        }
+
+         /////interest
+        
+        function updateInterest(){
+            const interestAll = ((sumofAllNeg + sumofAllPos) * 0.2).toFixed(2)
+            interest.textContent = interestAll
+        }
+        
+        const transferForm = document.getElementById("transferform")
+        const loanForm = document.getElementById("loanform")
+
+      /////// handle transfer
+
+
+        function handleTransfer(){
+
+            transferForm.addEventListener("submit", function(e){
+                e.preventDefault()
+            
+
+            const amountOutValue = Number(amountOut.textContent)
+            const inputElement = document.getElementById("transferamount")
+            const amount = Number(inputElement.value)
+            let totalBalanceAmount = Number(totalBalance.textContent)
+
+            transactionCount++
+
+            const recipientUsername = document.querySelector(".recipientusername")
+
+            const recipientUsernameInput = recipientUsername.value
+
+
+            const transferToRecipient = accounts.find(function(ele){
+                return ele.username == recipientUsernameInput
+            })
+
+
+            if (amount > 0 && amount <= totalAmount && transferToRecipient && recipientUsernameInput !== currentAccount.username){
+
+                let newBalance = totalAmount - amount
+                let newAmountOut = amountOutValue + amount
+
+                amountOut.textContent = newAmountOut
+
+                currentAccount.transactions.push(-amount)
+                transferToRecipient.transactions.push(amount)
+                console.log(currentAccount.transactions)
+
+                loadtransactionHTML(amount,"withdraw")
+
+                inputElement.value = ""
+                recipientUsername.value = ""
+            }else{
+
+                    errorMessageTransact(transferError)
+
+            }
+
+            })
+
+        }
+
+         handleTransfer()
+
+
+         /////// handle loan
+        function handleLoan(){
+
+            loanform.addEventListener("submit", function(e){
+                e.preventDefault()
+            
+
+            const amountInValue = Number(amountIn.textContent)
+            const inputElement = document.getElementById("loanamount")
+            const amount = Number(inputElement.value)
+            let totalBalanceAmount = Number(totalBalance.textContent)
+
+            transactionCount++
+
+            const fiftyPercentofTotal = totalAmount*0.5
+         
+            //  const existingAccount = accounts.some(function(ele){
+            //     return ele.username == recipientUsername
+            // })
+
+            if (amount > 0 && amount >= fiftyPercentofTotal){
+
+                let newBalance = totalAmount + amount
+                let newAmountIn = amountInValue + amount
+
+                amountIn.textContent = newAmountIn
+
+                currentAccount.transactions.push(amount)
+
+                loadtransactionHTML(amount,"deposit")
+
+                inputElement.value = ""
+            }else{
+
+                    errorMessageTransact(loanError)
+  
+
+            }
+
+            })
+
+        }
+
+        handleLoan()
+
+        function loadtransactionHTML(amount,typeOfTransaction){
+
+            const transactionHTML = `<div class="tablecontents tablestyle ">
+                                <p class="transactionnum">
+                                    ${transactionCount}
+                                </p>
+                                <p class="transactiontype">
+                                    <span class="${typeOfTransaction}">
+                                        ${typeOfTransaction}
+                                    </span>
+                                </p>
+                                <p class="transactiondate">
+                                     ${formattedTableDate}
+                                </p>
+                                <p class="transactionamount">
+                                    <span class="action"></span>
+                                    <span class="currency ${typeOfTransaction}">
+                                    $
+                                    </span>
+                                    <span class="loanamount ${typeOfTransaction}">
+                                     ${typeOfTransaction == "withdraw" ? "-" : ""}${amount}
+                                    </span> 
+                                </p>
+                            </div>`
+
+        tablescroll.insertAdjacentHTML("afterbegin", transactionHTML)
+                
+                
+                calculateTable()
+
+        }
+
+
+        //////////////////////////sort
+        const filterBtn1 = document.querySelector(".filterbtn1")
+        const filterBtn2 = document.querySelector(".filterbtn2")
+
+        function sortTransaction(order){
+
+            if (order == "asc"){
+                filterBtn1.classList.add("hide")
+                filterBtn2.classList.remove("hide")
+            }else{
+                filterBtn1.classList.remove("hide")
+                filterBtn2.classList.add("hide")
+            }
+        
+    
+            const sortedList = currentAccount.transactions.sort(function(j, k){
+            return order == "asc" ? j-k : k-j
+            })
+
+            tablescroll.innerHTML = sortedList.map(function(ele, ind){
+
+                const checkType = ele > 0 ? "deposit" : "withdraw"
+                return `<div class="tablecontents tablestyle ">
+                                <p class="transactionnum">
+                                    ${ind+1}
+                                </p>
+                                <p class="transactiontype">
+                                    <span class="${
+                                    checkType
+                                    }">
+                                        ${
+                                        checkType
+                                        }
+                                    </span>
+                                </p>
+                                <p class="transactiondate">
+                                     13.09.25
+                                </p>
+                                <p class="transactionamount">
+                                    <span class="action"></span>
+                                    <span class="${
+                                    checkType
+                                    }">
+                                    $
+                                    </span>
+                                    <span class="${
+                                    checkType
+                                    }">
+                                    ${ele}
+                                    </span> 
+                                </p>
+                            </div>`
+
+            })
+            .join("")
+        }
+
+        filterBtn1.addEventListener("click", function(){
+            sortTransaction("asc")
+        })
+
+        filterBtn2.addEventListener("click", function(){
+            sortTransaction("desc")
+        })
+
+
+        ////////////////////////logout
+
+        function logOut(){
+
+            timerContainer.classList.remove("show")
+            logOutClicked = true
+            
+            landingPage.classList.remove("hide")
+            loginLink.classList.remove("hide")
+            logoutIcon.classList.add("hide")
+            startPage.classList.add("hide")
+        
+        }
+
+        const logoutBtn = document.querySelector(".logoutbtn")
+
+        logoutBtn.addEventListener("click", function(e){
+            
+            e.preventDefault()
+            logOut()
+
+        })
+       
+
+        const closeForm = document.querySelector(".closeform")
+
+        const errorContainer = document.querySelector(".errorContainer")
+        
+
+        closeForm.addEventListener("submit", function(e){
+            e.preventDefault()
+
+
+            const usernameInput = deleteUsernameElement.value
+            const pinInput = Number(deletePinElement.value)
+           
+            const accountToClose = accounts.find(function(ele){
+                return ele.username == usernameInput
+            })
+
+
+            if (accountToClose && accountToClose.pin == pinInput){
+                usernameInput.value = ""
+                pinInput.value = ""
+                logOut()
+            }else{
+                errorMessage(closeError)   
+            }
+
+
+        })
+
+        ////TIMER
+
+        const timerTxt = document.querySelector(".timer")
+
+        
+
+        function timerCount(){
+            
+            let fiveMins = 300
+
+               function tick(){
+
+                let mins = String(Math.floor(fiveMins/60)).padStart(2,"0")
+                let secs = String(Math.floor(fiveMins%60)).padStart(2,"0")
+
+                timerTxt.textContent = `${mins}:${secs}`
+
+
+                if(logOutClicked == true || fiveMins <= 0){
+                    
+                    timerContainer.classList.remove("show")
+                    logOut()
+                    return
+                    
+                }
+
+                fiveMins --
+                setTimeout(tick, 1000)
+
+                }
+                
+            tick()
+        }
+
+        
+
+
+         function errorMessage(container){
+
+                const errorHTML = `<div class="errormessage">
+                                    <p class="message">Incorrect details</p>
+                                </div>`
+
+                 container.insertAdjacentHTML("afterbegin", errorHTML)
+
+                 const errorMsg = document.querySelector(".errormessage")
+
+               setTimeout(()=>{
+                errorMsg.remove()
+               }, 2000)
+                
+        }
+
+         function errorMessageTransact(container){
+
+                const errorHTML = `<div class="errormessage">
+                                    <p class="message">Something went wrong</p>
+                                </div>`
+
+                 container.insertAdjacentHTML("afterbegin", errorHTML)
+
+                 const errorMsgTrans = document.querySelector(".errormessage")
+
+               setTimeout(()=>{
+                errorMsgTrans.remove()
+               }, 2000)
+                
+        }
+
+
+        ///transfer to other account and update as deposit to other accounts 
+        //loan 50% of total balance not in minus total balnce shows as depoisit in transaction history
+
+    </script>
+</body>
+</html>
